@@ -1,6 +1,7 @@
-<h1>Create News entry</h1>
+<h1>Editing news</h1>
 
-<%= form_for :news, url: news_index_path do |f| %>
+<%= form_for :news, url: news_path(@news), method: :patch do |f| %>
+
   <% if @news.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -28,4 +29,6 @@
   <p>
     <%= f.submit %>
   </p>
+
 <% end %>
+
