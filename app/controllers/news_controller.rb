@@ -4,6 +4,7 @@ class NewsController < ApplicationController
   end
 
   def new
+    @news = News.new
   end
 
   def show
