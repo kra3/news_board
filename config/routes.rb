@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # get 'dashboard/index'
   resources :news do
-    resources :comments
+    resources :comments, except: [:index, :edit, :update]
   end
 
   root  'dashboard#index'
