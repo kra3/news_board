@@ -1,7 +1,6 @@
 <h1>Editing news</h1>
 
 <%= form_for :news, url: news_path(@news), method: :patch do |f| %>
-
   <% if @news.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -32,3 +31,4 @@
 
 <% end %>
 
+<%= link_to 'Back', news_path(@news) %>
