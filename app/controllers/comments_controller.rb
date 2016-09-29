@@ -6,9 +6,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @news = News.find(params[:news_id])
+    @comment = @news.comments.find(params[:id])
     @comment.destroy
-    redirect_to news_path(@comment.news)
+    redirect_to news_path(@news)
   end
 
   private
