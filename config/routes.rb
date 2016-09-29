@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   end
   # resources :comments
   root  'dashboard#index'
+
+  # for websocket
+  mount ActionCable.server => '/cable'
 end
