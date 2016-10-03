@@ -11,8 +11,10 @@
 <h2>Comments</h2>
 <%= render @news.comments %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+<% if @news.user == current_user %>
+    <h2>Add a comment:</h2>
+    <%= render 'comments/form' %>
+    <%= link_to 'Edit', edit_news_path(@news) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_news_path(@news) %> |
 <%= link_to 'Back', news_index_path %>

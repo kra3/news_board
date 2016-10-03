@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929191826) do
+ActiveRecord::Schema.define(version: 20161002202628) do
 
   create_table "comments", force: :cascade do |t|
-    t.string   "commenter"
     t.text     "body"
     t.integer  "news_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.index ["news_id"], name: "index_comments_on_news_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "news", force: :cascade do |t|
@@ -26,6 +27,17 @@ ActiveRecord::Schema.define(version: 20160929191826) do
     t.string   "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_news_on_user_id"
+  end
+
+  create_table "user_news", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "news_id"
+    t.boolean  "seen"
+    t.datetime "seen_on"
+    t.index ["news_id"], name: "index_user_news_on_news_id"
+    t.index ["user_id"], name: "index_user_news_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

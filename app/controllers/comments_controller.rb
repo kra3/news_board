@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @news = News.find(params[:news_id])
-    @comment = @news.comments.create(comment_params)
+    @comment = current_user.comments.create(comment_params.merge(:news => @news))
     redirect_to news_path(@news)
   end
 

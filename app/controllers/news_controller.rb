@@ -13,6 +13,8 @@ class NewsController < ApplicationController
 
   def create
     @news = News.new(news_params)
+    byebug
+    @news.user = current_user
 
     if @news.save
       redirect_to @news
@@ -38,7 +40,6 @@ class NewsController < ApplicationController
   def destroy
     @news = News.find(params[:id])
     @news.destroy
-
     redirect_to news_index_path
   end
   private
