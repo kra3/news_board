@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :user_news
-  has_many :news, through: :user_news, dependent: :destroy
+  has_many :news, dependent: :destroy
+  has_many :news_views
+  has_many :seen, through: :news_views, class_name: "News"
   has_many :comments, dependent: :destroy
 end

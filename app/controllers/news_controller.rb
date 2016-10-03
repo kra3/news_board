@@ -13,7 +13,6 @@ class NewsController < ApplicationController
 
   def create
     @news = News.new(news_params)
-    byebug
     @news.user = current_user
 
     if @news.save
